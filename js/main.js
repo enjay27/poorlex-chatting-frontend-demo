@@ -38,7 +38,7 @@ function connect(event) {
 
 function onConnected() {
     // Subscribe to the Battle
-    stompClient.subscribe(`/topic/battle/${battle}`, onMessageReceived);
+    stompClient.subscribe(`/topic/battles/${battle}`, onMessageReceived);
 
     connectingElement.classList.add('hidden');
 }
@@ -58,7 +58,7 @@ function sendMessage(event) {
             content: messageInput.value,
             type: 'CHAT'
         };
-        stompClient.send(`/app/chat/battle/${battle}`, {}, JSON.stringify(chatMessage));
+        stompClient.send(`/app/chat/battles/${battle}`, {}, JSON.stringify(chatMessage));
         messageInput.value = '';
     }
     event.preventDefault();
